@@ -23,7 +23,7 @@ and 270 degrees is south"""
 
 turtle.home()   #This sets the point back to the origin and resets its heading
 
-turtle.circle(100, 360, 14) #This is the coding on how to make a cicle.
+turtle.circle(100) #This is the coding on how to make a cicle.
 
 """The format to code a circle is turtle.circle(radius, extent, steps). The number
 in the radius slot is the length of the radius. The extent is how much the cicle
