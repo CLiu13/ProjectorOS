@@ -1,16 +1,18 @@
 import turtle
+#Screensize#
+turtle.screensize(1200,1200)
 #Square#
-turtle.forward(100)
+turtle.forward(500)
 turtle.right(90)
-turtle.forward(100)
+turtle.forward(500)
 turtle.right(90)
-turtle.forward(100)
+turtle.forward(500)
 turtle.right(90)
-turtle.forward(100)
+turtle.forward(500)
 turtle.right(90)
 #Trapezoid#
-turtle.setpos(0,-100)
-turtle.goto(25,0)
+turtle.setpos(0,0)
+turtle.goto(125,-500)
 turtle.setheading(0)
-turtle.forward(50)
-turtle.goto(100,-100)
+turtle.forward(250)
+turtle.goto(500,0)
