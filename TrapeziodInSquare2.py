@@ -1,5 +1,5 @@
 import turtle
-
+#Square#
 turtle.forward(100)
 turtle.right(90)
 turtle.forward(100)
@@ -8,7 +8,7 @@ turtle.forward(100)
 turtle.right(90)
 turtle.forward(100)
 turtle.right(90)
-
+#Trapezoid#
 turtle.setpos(0,-100)
 turtle.goto(25,0)
 turtle.setheading(0)
