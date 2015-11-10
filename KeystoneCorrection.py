@@ -16,11 +16,3 @@ screen.fill(black)
 pygame.display.set_caption('ProjectorOS')
 pygame.draw.rect(screen, white, (500,500,500,500))
 pygame.display.update()
-_quit = False
-    while not _quit:
-        for e in pygame.event.get():
-            if (e.type is KEYDOWN and e.key == K_RETURN
-                    and (e.mod&(KMOD_LALT|KMOD_RALT)) != 0):
-                pygame.display.toggle_fullscreen()
-            if e.type is QUIT: _quit = True
-            if e.type is KEYDOWN and e.key == K_ESCAPE: _quit = True
