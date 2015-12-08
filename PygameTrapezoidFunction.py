@@ -33,7 +33,7 @@ yp3 = 700+int(h)
 xp4 = 700+(int(b1))/2
 yp4 = 700+int(h)
 
-#Draw trapezoid
+#Draw trapezoid OUTLINE
 pygame.draw.line(screen, green, [xp1,yp1],[xp2,yp2], 5) #Display, color, 1st coord, 2nd coord, width
 pygame.draw.line(screen, green, [xp2,yp2],[xp4,yp4], 5)
 pygame.draw.line(screen, green, [xp4,yp4],[xp3,yp3], 5)
