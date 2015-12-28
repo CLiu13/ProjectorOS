@@ -21,7 +21,7 @@ screen = pygame.display.set_mode((1680,1050))
 pygame.display.set_caption("Trapezoid Function")
 
 # Clear the screen and set the screen background
-surface.fill(white)
+screen.fill(white)
 
 #Translate input to coordinates
 xp1 = 700-(int(b2))/2

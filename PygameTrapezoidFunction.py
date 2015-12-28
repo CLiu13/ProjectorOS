@@ -1,5 +1,7 @@
 import pygame
+import time
 from math import pi
+from screenres import screenres
 
 pygame.init()
 
@@ -10,28 +12,36 @@ blue = (0,0,255)
 green = (0,255,0)
 red = (255,0,0)
 
-#Create our variables
-b1 = input("Please enter the 1st base height: ")
-b2 = input("Please enter the 2nd base height: ")
-h = input("Please enter the height: ")
+#Create our dimensions
+width = screenres.width
+height = screenres.height
+
+#Create our sizes
+b1 = int(width/3)
+b2 = int(width*2/3)
+h = int(height/3)
+
+#Create our center
+centx = int(width/2)
+centy = int(height/2)
 
 # Set the height and width of the screen
-screen = pygame.display.set_mode((1680,1050))
+screen = pygame.display.set_mode((width,height))
 
 pygame.display.set_caption("Trapezoid Function")
 
 # Clear the screen and set the screen background
-surface.fill(white)
+screen.fill(white)
 
-#Translate input to coordinates
-xp1 = 700-(int(b2))/2
-yp1 = 700
-xp2 = 700+(int(b2))/2
-yp2 = 700
-xp3 = 700-(int(b1))/2
-yp3 = 700+int(h)
-xp4 = 700+(int(b1))/2
-yp4 = 700+int(h)
+#Create our coordinates
+xp1 = int(centx - b1/2) 
+yp1 = int(centy + h/2)
+xp2 = int(centx + b1/2)
+yp2 = int(centy + h/2)
+xp3 = int(centx - b2/2)
+yp3 = int(centy - h/2)
+xp4 = int(centx + b2/2)
+yp4 = int(centy - h/2)
 
 #Draw trapezoid OUTLINE
 pygame.draw.line(screen, green, [xp1,yp1],[xp2,yp2], 5) #Display, color, 1st coord, 2nd coord, width
@@ -41,3 +51,5 @@ pygame.draw.line(screen, green, [xp3,yp3],[xp1,yp1], 5)
 
 #Updates the screen
 pygame.display.update()
+
+time.sleep(30)
