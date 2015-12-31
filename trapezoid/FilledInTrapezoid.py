@@ -1,3 +1,4 @@
+import time
 import pygame
 from math import pi
 
@@ -28,13 +29,13 @@ xp1 = 700-(int(b2))/2
 yp1 = 700
 xp2 = 700+(int(b2))/2
 yp2 = 700
-xp3 = 700-(int(b1))/2
-yp3 = 700+int(h)
-xp4 = 700+(int(b1))/2
+xp4 = 700-(int(b1))/2
 yp4 = 700+int(h)
+xp3 = 700+(int(b1))/2
+yp3 = 700+int(h)
 
 #Draw trapezoid FILLED IN
-pygame.draw.polygon(screen, green, [xp1,yp1], [xp2,yp2], [xp3,yp3], [xp4,yp4]) #Display, color, coordinates
-
+pygame.draw.polygon(screen, green, [(xp1,yp1), (xp2,yp2), (xp3,yp3), (xp4,yp4)], 0) #Display, color, coordinates, width: put 0 for filled in
 #Updates the screen
 pygame.display.update()
+time.sleep(30)
