@@ -15,14 +15,15 @@ def find_coeffs(pa, pb):
 from PIL import Image
 
 
-def project(img, compressfactor):
+def project(img, xcompressfactor, ycompressfactor):
     
     width, height = img.size
 
-    x1= (compressfactor/2)*width
+    x1= (xcompressfactor/2)*width
     x2= width-x1
+    newheight= height*ycompressfactor
     coeffs = find_coeffs(
-        [(x1,0),(x2,0),(width,height),(0,height)],
+        [(x1,0),(x2,0),(width,newheight),(0,newheight)],
         [(0,0),(width,0),(width,height),(0,height)])
     print(coeffs)
 
