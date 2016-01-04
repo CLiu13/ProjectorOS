@@ -9,18 +9,18 @@ from screenres import screenres
 w = screenres.width
 h = screenres.height
 
-oldimg=Image.open("/home/pi/ProjectorOS/tools/images/cute-cat.jpg")
+oldimg=Image.open(sys.argv[1])
 newimg=oldimg.resize((w,h), Image.ANTIALIAS)
-newimg.save("/home/pi/ProjectorOS/tools/images/resize-cat.jpg")
+newimg.save("/home/pi/ProjectorOS/tools/images/resize.jpg")
 
-img=Image.open("/home/pi/ProjectorOS/tools/images/resize-cat.jpg")
-xc=float(sys.argv[1])
-yc=float(sys.argv[2])
+img=Image.open("/home/pi/ProjectorOS/tools/images/resize.jpg")
+xc=float(sys.argv[2])
+yc=float(sys.argv[3])
 transimg=transfunction.project(img, xc, yc)
-transimg.save("/home/pi/ProjectorOS/tools/images/new-cat.jpg")
+transimg.save("/home/pi/ProjectorOS/tools/images/new.jpg")
 time.sleep(5)
 
-loadimg=pygame.image.load("/home/pi/ProjectorOS/tools/images/new-cat.jpg")
+loadimg=pygame.image.load("/home/pi/ProjectorOS/tools/images/new.jpg")
 
 pygame.init()
 
