@@ -45,6 +45,11 @@ def showtime():
   screen.blit(loadimg,(0,0))
   pygame.display.update()
 
-for x in range(0,5):
+while True:
   showtime()
-
+  for event in pygame.event.get():
+    if event.type == pygame.KEYDOWN:
+      if event.key == pygame.K_q:
+        sys.exit()
+    
+ 
