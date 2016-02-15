@@ -1,4 +1,6 @@
 import numpy
+import cv2
+from PIL import Image
 
 def find_coeffs(pa, pb):
     matrix = []
@@ -12,9 +14,6 @@ def find_coeffs(pa, pb):
     res = numpy.dot(numpy.linalg.inv(A.T * A) * A.T, B)
     return numpy.array(res).reshape(8)
 
-from PIL import Image
-
-
 def coeffs(width, height, xcompressfactor, ycompressfactor):
 
     x1 = (xcompressfactor/2)*width
@@ -25,7 +24,23 @@ def coeffs(width, height, xcompressfactor, ycompressfactor):
         [(0,0),(width,0),(width,height),(0,height)])
     return coeffs
 
+def cv(img, width, height, xcompressfactor, ycompressfactor):
+    
+    x1 = (xcompressfactor/2)*width
+    x2 = width-x1
+    newheight = height*ycompressfactor
 
+    image = cv2.imread(img)
+    
+    oldpoints = numpy.float32([[0,0],[width,0],[width,height],[0,height]])
+    newpoints = numpy.float32([[x1,0],[x2,0],[width,newheight],[0,newheight]])
+    
+    matrix = cv2.getPerspectiveTransform(oldpoints, newpoints)
+    
+    newimg = cv2.warpPerspective(image, matrix, (width, height))
+
+    return newimg
+  
 def project(img, coeffs):
 
     width, height = img.size
