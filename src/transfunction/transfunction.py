@@ -1,6 +1,7 @@
 import numpy
 
 def find_coeffs(pa, pb):
+
     matrix = []
     for p1, p2 in zip(pa, pb):
         matrix.append([p1[0], p1[1], 1, 0, 0, 0, -p2[0]*p1[0], -p2[0]*p1[1]])
@@ -13,7 +14,6 @@ def find_coeffs(pa, pb):
     return numpy.array(res).reshape(8)
 
 from PIL import Image
-
 
 def coeffs(width, height, xcompressfactor, ycompressfactor):
 
