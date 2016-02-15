@@ -3,6 +3,7 @@ import cv2
 from PIL import Image
 
 def find_coeffs(pa, pb):
+
     matrix = []
     for p1, p2 in zip(pa, pb):
         matrix.append([p1[0], p1[1], 1, 0, 0, 0, -p2[0]*p1[0], -p2[0]*p1[1]])
@@ -14,6 +15,11 @@ def find_coeffs(pa, pb):
     res = numpy.dot(numpy.linalg.inv(A.T * A) * A.T, B)
     return numpy.array(res).reshape(8)
 
+<<<<<<< HEAD
+=======
+from PIL import Image
+
+>>>>>>> c095db1bcccd55624a56026fdf0c83b9c54516ff
 def coeffs(width, height, xcompressfactor, ycompressfactor):
 
     x1 = (xcompressfactor/2)*width
