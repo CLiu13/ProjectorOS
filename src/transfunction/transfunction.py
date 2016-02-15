@@ -15,11 +15,6 @@ def find_coeffs(pa, pb):
     res = numpy.dot(numpy.linalg.inv(A.T * A) * A.T, B)
     return numpy.array(res).reshape(8)
 
-<<<<<<< HEAD
-=======
-from PIL import Image
-
->>>>>>> c095db1bcccd55624a56026fdf0c83b9c54516ff
 def coeffs(width, height, xcompressfactor, ycompressfactor):
 
     x1 = (xcompressfactor/2)*width
