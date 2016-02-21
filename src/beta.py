@@ -9,14 +9,16 @@ from screenres import screenres
 w = screenres.width
 h = screenres.height
 
-img = Image.open(sys.argv[1])
+w = 400
+h = 300
+
+img = sys.argv[1]
 xc = float(sys.argv[2])
 yc = float(sys.argv[3])
-transimg = transfunction.cv(img, w, h, xc, yc) 
-transimg.save("/home/pi/ProjectorOS/tools/images/beta.jpg")
-time.sleep(5)
 
-loadimg = pygame.image.load("/home/pi/ProjectorOS/tools/images/beta.jpg")
+imgpath = transfunction.cv(img, w, h, xc, yc) 
+
+loadimg = pygame.image.load(imgpath)
 
 pygame.init()
 screen = pygame.display.set_mode((w,h))

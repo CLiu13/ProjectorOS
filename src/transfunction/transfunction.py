@@ -1,3 +1,4 @@
+import pygame
 import numpy
 import cv2
 from PIL import Image
@@ -25,22 +26,31 @@ def coeffs(width, height, xcompressfactor, ycompressfactor):
         [(0,0),(width,0),(width,height),(0,height)])
     return coeffs
 
-def cv(img, width, height, xcompressfactor, ycompressfactor):
+def matrix(width, height, xcompressfactor, ycompressfactor):
     
     x1 = (xcompressfactor/2)*width
     x2 = width-x1
     newheight = height*ycompressfactor
-
-    image = cv2.imread(img)
-    
-    oldpoints = numpy.float32([[0,0],[width,0],[width,height],[0,height]])
-    newpoints = numpy.float32([[x1,0],[x2,0],[width,newheight],[0,newheight]])
-    
+    oldpoints = numpy.float32([[0,0],[width,0],[0,height],[width,height]])
+    newpoints = numpy.float32([[x1,0],[x2,0],[0,height],[width,height]])
     matrix = cv2.getPerspectiveTransform(oldpoints, newpoints)
-    
-    newimg = cv2.warpPerspective(image, matrix, (width, height))
+   
+    return matrix
 
-    return newimg
+m = None
+
+def cv(img, width, height, xcompressfactor, ycompressfactor):
+    
+    global m
+
+    if m is None:
+        m = matrix(width, height, xcompressfactor, ycompressfactor)
+ 
+    newimg = cv2.warpPerspective(img, m, (width,height))
+    
+    pygameimage = pygame.image.frombuffer(newimg.tostring(), tuple(newimg.shape[1::-1]), "RGB")
+
+    return pygameimage
   
 def project(img, coeffs):
 
