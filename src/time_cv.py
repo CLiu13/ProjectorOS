@@ -4,16 +4,8 @@ import pygame
 from pygame.locals import*
 from transfunction import transfunction
 from screenres import screenres
-from PIL import Image
-import ImageDraw
-import ImageFont
 import time
 import sys
-
-blankimg = Image.open(sys.argv[1])
-
-font_path = "/home/pi/ProjectorOS/tools/fonts/FreeMono.ttf"
-font = ImageFont.truetype(font_path, 250, encoding="unic")
 
 w = screenres.width
 h = screenres.height
@@ -21,25 +13,25 @@ h = screenres.height
 pygame.init()
 screen = pygame.display.set_mode((w,h))
 
-xc=float(sys.argv[2])
-yc=float(sys.argv[3])
+xc=float(sys.argv[1])
+yc=float(sys.argv[2])
 
 x = 0
 y = screenres.height/2
+
+blankimg = numpy.zeros((h, w, 3), numpy.uint8)
  
 def showtime():
-  timeimg = blankimg.copy()  	  
-  draw = ImageDraw.Draw(timeimg)
 
-  t = time.strftime('%l:%M:%S%p')
-  draw.text((x,y), t, (255, 255, 255), font=font)
-
-  cvimage = cv2.cvtColor(numpy.array(timeimg), cv2.COLOR_RGB2BGR)
+  text = time.strftime('%l:%M:%S%p')
+  timeimg = cv2.putText(blankimg, text, (x,y), cv2.FONT_HERSHEY_DUPLEX, 9, tuple((0,255,0)), 13)
   
-  loadimg=transfunction.cv(cvimage, w, h, xc, yc)
+  loadimg=transfunction.cv(blankimg, w, h, xc, yc)
 
   screen.blit(loadimg,(0,0))
   pygame.display.update()
+
+  blankimg[:] = tuple((0,0,0))
 
 lastime = time.time()
 

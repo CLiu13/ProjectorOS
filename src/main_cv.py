@@ -2,23 +2,25 @@ import sys
 import time
 import pygame
 from pygame.locals import*
-from PIL import Image
+import cv2
 from transfunction import transfunction
 from screenres import screenres
 
 w = screenres.width
 h = screenres.height
 
-w = 400
-h = 300
-
 img = sys.argv[1]
 xc = float(sys.argv[2])
 yc = float(sys.argv[3])
 
-imgpath = transfunction.cv(img, w, h, xc, yc) 
+opencvimg = cv2.imread(img)
 
-loadimg = pygame.image.load(imgpath)
+b,g,r = cv2.split(opencvimg)
+colorimg = cv2.merge([r,g,b])
+
+resizeimg = cv2.resize(colorimg, (w,h))
+
+loadimg = transfunction.cv(resizeimg, w, h, xc, yc) 
 
 pygame.init()
 screen = pygame.display.set_mode((w,h))
