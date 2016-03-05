@@ -32,7 +32,7 @@ def matrix(width, height, xcompressfactor, ycompressfactor):
     x2 = width-x1
     newheight = height*ycompressfactor
     oldpoints = numpy.float32([[0,0],[width,0],[0,height],[width,height]])
-    newpoints = numpy.float32([[x1,0],[x2,0],[0,height],[width,height]])
+    newpoints = numpy.float32([[x1,0],[x2,0],[0,newheight],[width,newheight]])
     matrix = cv2.getPerspectiveTransform(oldpoints, newpoints)
    
     return matrix
