@@ -13,18 +13,20 @@ h = screenres.height
 pygame.init()
 screen = pygame.display.set_mode((w,h))
 
-xc=float(sys.argv[1])
-yc=float(sys.argv[2])
+xc = float(sys.argv[1])
+yc = float(sys.argv[2])
+
+fontsize = float(sys.argv[3])
 
 x = 0
-y = screenres.height/2
+y = h/4
 
 blankimg = numpy.zeros((h, w, 3), numpy.uint8)
  
 def showtime():
 
-  text = time.strftime('%l:%M:%S%p')
-  timeimg = cv2.putText(blankimg, text, (x,y), cv2.FONT_HERSHEY_DUPLEX, 9, tuple((0,255,0)), 13)
+  text = time.strftime('%I:%M:%S%p')
+  timeimg = cv2.putText(blankimg, text, (x,y), cv2.FONT_HERSHEY_DUPLEX, fontsize, tuple((0,255,0)), 7)
   
   loadimg=transfunction.cv(blankimg, w, h, xc, yc)
 

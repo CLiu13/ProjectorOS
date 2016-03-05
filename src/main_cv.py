@@ -10,6 +10,7 @@ w = screenres.width
 h = screenres.height
 
 img = sys.argv[1]
+
 xc = float(sys.argv[2])
 yc = float(sys.argv[3])
 
